@@ -44,14 +44,22 @@ def _part_checksums(text: str) -> dict[str, str]:
     return found
 
 
+def _weight_relative(name: str) -> Path | None:
+    parts = Path(name).parts
+    if len(parts) < 2 or parts[1] != "models":
+        return None
+    return Path(*parts[1:])
+
+
 def _extract_models(archive: Path) -> None:
     with zipfile.ZipFile(archive) as packed:
-        members = [name for name in packed.namelist() if "/models/" in f"/{name}" or name.startswith("models/")]
+        members = [name for name in packed.namelist() if _weight_relative(name) is not None]
         if not members:
             raise SystemExit("archive does not contain a models directory")
         for name in members:
-            marker = name.find("models/")
-            relative = Path(name[marker:])
+            relative = _weight_relative(name)
+            if relative is None:
+                continue
             if name.endswith("/"):
                 (RUNNER / relative).mkdir(parents=True, exist_ok=True)
                 continue
