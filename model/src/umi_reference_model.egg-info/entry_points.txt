@@ -1,0 +1,4 @@
+[console_scripts]
+umi-build-local-extractor = bitsign_motion.local_extractor_release:main
+umi-rebind-local-extractor = bitsign_motion.local_bundle_rebind:main
+umi-reference-backend = bitsign_motion.umi_reference_backend:main

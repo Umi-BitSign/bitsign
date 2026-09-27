@@ -1,0 +1,10 @@
+.DS_Store
+.dart_tool/
+.idea/
+*.iml
+build/
+.venv/
+__pycache__/
+*.pyc
+.flutter-plugins-dependencies
+model/release/bundle/

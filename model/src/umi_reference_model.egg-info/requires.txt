@@ -1,0 +1,8 @@
+numpy==2.3.5
+rfc8785==0.1.4
+safetensors==0.8.0
+torch==2.7.0
+
+[dev]
+pytest==8.4.2
+ruff==0.12.12
