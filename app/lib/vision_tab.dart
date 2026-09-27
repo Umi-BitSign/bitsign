@@ -132,7 +132,7 @@ class VisionTabState extends State<VisionTab> with SimpleFrameAppState, Brillian
         children: [
           Text(_status),
           const SizedBox(height: 12),
-          const Text('Frame: tap three times. Halo: click once. The phone sends a few stills to the UMI model. English shows here and on the glasses only when that model returns a line.'),
+          const Text('Frame: tap three times. Halo: click once. The phone sends a few stills to the open UMI baseline. English shows here and on the glasses only when that model returns a line.'),
           const SizedBox(height: 16),
           FilledButton(
             onPressed: _busy ? null : translateBurst,

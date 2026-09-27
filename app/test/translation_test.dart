@@ -34,12 +34,12 @@ void main() {
   test('an empty model response shows the reason and does not speak', () {
     final result = translationFromResponse(
       statusCode: 200,
-      body: '{"english":"","model":"umi-s1-public-finetune-v1","reason":"S1 did not return English."}',
+      body: '{"english":"","model":"umi-community-baseline-v0.2","reason":"The community baseline did not return an English line."}',
       frames: 4,
     );
     expect(result.english, isEmpty);
     expect(result.canSpeak, isFalse);
-    expect(result.status, 'S1 did not return English.');
+    expect(result.status, 'The community baseline did not return an English line.');
   });
 
   test('an error status does not speak', () {

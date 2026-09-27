@@ -9,11 +9,17 @@ The phone has two tabs:
 
 ## Model
 
-The translation model in `model/` is the published UMI SN78 public model, `umi-s1-public-finetune-v1`, from [Umi-BitSign/umi-reference-model](https://github.com/Umi-BitSign/umi-reference-model). It is the public skeletal-motion model shipped for the subnet. It is an early bootstrap, not an ASL interpreter, and a cohort winner's private weights are not in this repo.
+BitSign uses the newest public UMI SN78 baseline or certified winner whose weights are actually published. The pin is `model/ACTIVE.json`. That is `umi-community-baseline-v0.2` from [community-baseline-v0.2](https://github.com/Umi-BitSign/umi-reference-model/releases/tag/community-baseline-v0.2). Cohort score tables do not count, because they do not include weights.
 
-S1 reads landmark motion from its Linux extractor. It does not read the raw glasses stills. `services/vision/server.py` accepts the phone burst and returns `{"english":""}` until that extractor produces a line. It does not invent English and it does not store the burst.
+The vision service calls only the runner named in that pin. The runner in `model/community-baseline-v0.2/` reads a video and prints one JSON object. The vision service turns a glasses burst into a short video, runs that runner, and copies the `text` field into `english`. If the weights are missing, or the runner returns no line, `english` stays empty. The phone does not speak a reason, and the burst is not stored.
 
-Weights and the portable bundle are CC BY-SA 4.0. See `model/MODEL_CARD.md` and `model/release/`.
+Install the open weights, which are about 2.9 GB and are not committed:
+
+```sh
+python3 model/fetch_baseline.py
+```
+
+The first translation also builds the runner's `.runtime` through `run.sh` (Python 3.10). `ffmpeg` is required to pack the stills.
 
 ## Run the vision service
 

@@ -1,5 +1,5 @@
 name: bitsign
-description: BitSign phone app. Brilliant glasses tap-to-translate, backed by the published UMI SN78 model, plus a SignRush tab.
+description: BitSign phone app. Brilliant glasses tap-to-translate, backed by the latest public UMI model with open weights, plus a SignRush tab.
 publish_to: "none"
 version: 0.1.0+1
 

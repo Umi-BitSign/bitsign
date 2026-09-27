@@ -8,3 +8,4 @@ __pycache__/
 *.pyc
 .flutter-plugins-dependencies
 model/release/bundle/
+model/weights/

@@ -1,0 +1,19 @@
+{
+  "id": "umi-community-baseline-v0.2",
+  "role": "latest-public-open-weights",
+  "selected": "2026-09-27",
+  "rule": "BitSign uses the newest public UMI SN78 baseline or certified winner whose weights are published. Score tables without weight files do not qualify. Unpublished cohort checkpoints do not qualify.",
+  "release": "https://github.com/Umi-BitSign/umi-reference-model/releases/tag/community-baseline-v0.2",
+  "archive": {
+    "filename": "umi-community-baseline-v0.2.zip",
+    "bytes": 2934700086,
+    "sha256": "f78979599486456e06e7886b126169f8d45e5e1e7d16d7a2b617648615eef3d4",
+    "parts_sha256": "https://github.com/Umi-BitSign/umi-reference-model/releases/download/community-baseline-v0.2/SHA256SUMS.parts",
+    "parts": [
+      "https://github.com/Umi-BitSign/umi-reference-model/releases/download/community-baseline-v0.2/umi-community-baseline-v0.2.zip.part-aa",
+      "https://github.com/Umi-BitSign/umi-reference-model/releases/download/community-baseline-v0.2/umi-community-baseline-v0.2.zip.part-ab"
+    ]
+  },
+  "runner": "model/community-baseline-v0.2",
+  "english_field": "text"
+}
