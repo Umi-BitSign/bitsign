@@ -34,3 +34,7 @@ flutter run --dart-define=BITSIGN_INFERENCE_URL=http://<this-computer>:8091/tran
 ```
 
 Use the computer's address, not `127.0.0.1`, when the app runs on a phone.
+
+## License
+
+The BitSign app and vision service are Apache-2.0. The runner in `model/community-baseline-v0.2/` and the files in `model/release/` keep the licenses shipped with those artifacts.
