@@ -47,6 +47,12 @@ end
 
 -- draw the current text on the display
 function print_text(parsed_data)
+	-- Halo has no double buffer and no implicit clear, so a shorter caption
+	-- panel would leave the tail of the previous one on screen. An empty
+	-- string is therefore how the phone blanks the display between panels.
+	if frame.HARDWARE_VERSION ~= "Frame" then
+		frame.display.clear(0x000000)
+	end
 	local i = 0
 	for line in parsed_data.string:gmatch("([^\n]*)\n?") do
 		if line ~= "" then
