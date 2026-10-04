@@ -9,3 +9,6 @@ __pycache__/
 .flutter-plugins-dependencies
 model/release/bundle/
 model/weights/
+model/heads/
+*.pt
+*.pth
