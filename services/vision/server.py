@@ -5,11 +5,12 @@ The active model is model/ACTIVE.json. English is that runner's text
 field when a burst finishes. An empty string means no line came back.
 This service does not invent a sentence and does not store the burst.
 
-/translate runs that runner's continuous path. /fingerspell reads the same
-frozen encoder with a CTC letter head instead, for the turn-based glasses
-interaction, and refuses the burst without a consent assertion. Its "mode"
-field picks the decode: "continuous" for a burst, "slow-spell" for one still
-per deliberately held letter.
+/translate runs that runner's continuous path with decode overrides from
+model/fs_router.json. /fingerspell reads the same frozen encoder with a CTC
+letter head instead, for the turn-based glasses interaction, and refuses the
+burst without a consent assertion. Its "mode" field picks the decode:
+"continuous" for a burst, "slow-spell" for one still per deliberately held
+letter. /route runs both and applies the precision-gated FS router (rc5 rules).
 """
 
 from __future__ import annotations
@@ -26,9 +27,12 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+import fs_router
+
 ROOT = Path(__file__).resolve().parents[2]
 PIN = json.loads((ROOT / "model" / "ACTIVE.json").read_text())
 MODEL_ID = PIN["id"]
+ROUTE_MODEL_ID = PIN.get("route_id") or "bitsign-v0.2-fsrouter"
 RUNNER = ROOT / PIN["runner"]
 HOST = "127.0.0.1"
 PORT = 8091
@@ -52,6 +56,7 @@ SPELL_HEAD = ROOT / "model" / "heads" / "spell_head_fsboard.pt"
 SPELL_MODEL_ID = f"{MODEL_ID}+spell-head"
 SPELL_RUNNER = Path(__file__).resolve().parent / "spell_runner.py"
 VENV_PYTHON = Path(".runtime/bin/python")
+ROUTER_CONFIG = fs_router.load_config()
 
 # A glasses burst is read once and dropped. It is not retained and it never
 # reaches the corpus, so the route refuses a request that asks for either.
@@ -155,20 +160,29 @@ def _burst_to_mp4(images: list[bytes], dest: Path) -> None:
     )
 
 
-def _baseline_line(images: list[bytes], runner: Path) -> str:
+def _generation_env() -> dict[str, str]:
+    """Decode overrides from model/fs_router.json (rc5-aligned)."""
+    env = os.environ.copy()
+    overrides = fs_router.generation_overrides(ROUTER_CONFIG)
+    if "length_penalty" in overrides:
+        env["BITSIGN_LENGTH_PENALTY"] = str(overrides["length_penalty"])
+    if "no_repeat_ngram_size" in overrides:
+        env["BITSIGN_NO_REPEAT_NGRAM"] = str(overrides["no_repeat_ngram_size"])
+    return env
+
+
+def _baseline_line_from_video(video: Path, runner: Path) -> str:
     script = runner / "run.sh"
     if not script.is_file():
         raise RuntimeError("baseline runner is missing")
-    with _INFERENCE, tempfile.TemporaryDirectory(prefix="bitsign-") as tmp:
-        video = Path(tmp) / "burst.mp4"
-        _burst_to_mp4(images, video)
-        completed = subprocess.run(
-            ["bash", str(script), "--device", _device(), str(video)],
-            cwd=runner,
-            capture_output=True,
-            text=True,
-            timeout=INFERENCE_TIMEOUT,
-        )
+    completed = subprocess.run(
+        ["bash", str(script), "--device", _device(), str(video)],
+        cwd=runner,
+        capture_output=True,
+        text=True,
+        timeout=INFERENCE_TIMEOUT,
+        env=_generation_env(),
+    )
     if completed.returncode != 0 or not completed.stdout.strip():
         return ""
     try:
@@ -179,32 +193,39 @@ def _baseline_line(images: list[bytes], runner: Path) -> str:
     return text.strip() if isinstance(text, str) else ""
 
 
-def _spelled_letters(images: list[bytes], runner: Path, head: Path, mode: str) -> tuple[str, int]:
-    with _INFERENCE, tempfile.TemporaryDirectory(prefix="bitsign-spell-") as tmp:
+def _baseline_line(images: list[bytes], runner: Path) -> str:
+    with _INFERENCE, tempfile.TemporaryDirectory(prefix="bitsign-") as tmp:
         video = Path(tmp) / "burst.mp4"
         _burst_to_mp4(images, video)
-        completed = subprocess.run(
-            [
-                str(runner / VENV_PYTHON), "-B", str(SPELL_RUNNER),
-                "--root", str(runner), "--head", str(head), "--device", _device(),
-                "--mode", mode,
-                str(video),
-            ],
-            cwd=runner,
-            capture_output=True,
-            text=True,
-            timeout=SPELL_TIMEOUT,
-        )
+        return _baseline_line_from_video(video, runner)
+
+
+def _spelled_from_video(
+    video: Path, runner: Path, head: Path, mode: str
+) -> tuple[str, int, float]:
+    completed = subprocess.run(
+        [
+            str(runner / VENV_PYTHON), "-B", str(SPELL_RUNNER),
+            "--root", str(runner), "--head", str(head), "--device", _device(),
+            "--mode", mode,
+            str(video),
+        ],
+        cwd=runner,
+        capture_output=True,
+        text=True,
+        timeout=SPELL_TIMEOUT,
+    )
     if completed.returncode != 0 or not completed.stdout.strip():
-        return "", 0
+        return "", 0, 0.0
     try:
         parsed = json.loads(completed.stdout.strip().splitlines()[-1])
     except json.JSONDecodeError:
-        return "", 0
+        return "", 0, 0.0
     if not isinstance(parsed, dict):
-        return "", 0
+        return "", 0, 0.0
     letters = parsed.get("spelled")
     frames = parsed.get("frames")
+    confidence = parsed.get("confidence")
     if not isinstance(letters, str):
         letters = ""
     elif mode != SPELL_MODE_SLOW:
@@ -214,7 +235,16 @@ def _spelled_letters(images: list[bytes], runner: Path, head: Path, mode: str) -
     return (
         letters,
         frames if isinstance(frames, int) and not isinstance(frames, bool) else 0,
+        float(confidence) if isinstance(confidence, (int, float)) and not isinstance(confidence, bool) else 0.0,
     )
+
+
+def _spelled_letters(images: list[bytes], runner: Path, head: Path, mode: str) -> tuple[str, int]:
+    with _INFERENCE, tempfile.TemporaryDirectory(prefix="bitsign-spell-") as tmp:
+        video = Path(tmp) / "burst.mp4"
+        _burst_to_mp4(images, video)
+        letters, frames, _confidence = _spelled_from_video(video, runner, head, mode)
+        return letters, frames
 
 
 def _consented(payload: dict[str, Any]) -> bool:
@@ -333,6 +363,121 @@ def translate(payload: dict[str, Any], runner: Path | None = None) -> dict[str, 
     return {"english": line, "model": MODEL_ID}
 
 
+def route(
+    payload: dict[str, Any],
+    runner: Path | None = None,
+    head: Path | None = None,
+) -> dict[str, Any]:
+    """Continuous + fingerspelling with a precision-gated router (rc5 shape).
+
+    Requires the same consent assertion as /fingerspell because the spelling
+    head may read the burst. Slow-spell is not routed: use /fingerspell.
+    """
+    if payload.get("retain") or payload.get("corpus"):
+        raise ValueError("A glasses burst is read for this turn only. It is not retained.")
+    if payload.get("mode") == SPELL_MODE_SLOW:
+        raise ValueError("slow-spell is not routed; use /fingerspell")
+    if not _consented(payload):
+        return {
+            "english": "",
+            "spelled": "",
+            "baseline": "",
+            "path": "none",
+            "stage": 0,
+            "confidence": 0.0,
+            "model": ROUTE_MODEL_ID,
+            "provisional": True,
+            "retained": False,
+            "error": "consent_required",
+            "reason": NO_CONSENT,
+        }
+    images = _burst(payload)
+    root = runner or RUNNER
+    checkpoint = spell_head(head)
+    if not weights_ready(root):
+        return {
+            "english": "",
+            "spelled": "",
+            "baseline": "",
+            "path": "none",
+            "stage": 0,
+            "confidence": 0.0,
+            "model": ROUTE_MODEL_ID,
+            "provisional": True,
+            "retained": False,
+            "error": "weights_missing",
+            "reason": MISSING_WEIGHTS,
+        }
+    if not checkpoint.is_file():
+        return {
+            "english": "",
+            "spelled": "",
+            "baseline": "",
+            "path": "none",
+            "stage": 0,
+            "confidence": 0.0,
+            "model": ROUTE_MODEL_ID,
+            "provisional": True,
+            "retained": False,
+            "error": "spell_head_missing",
+            "reason": MISSING_SPELL_HEAD,
+        }
+    if not (root / VENV_PYTHON).is_file():
+        return {
+            "english": "",
+            "spelled": "",
+            "baseline": "",
+            "path": "none",
+            "stage": 0,
+            "confidence": 0.0,
+            "model": ROUTE_MODEL_ID,
+            "provisional": True,
+            "retained": False,
+            "error": "runtime_missing",
+            "reason": MISSING_RUNTIME,
+        }
+    try:
+        with _INFERENCE, tempfile.TemporaryDirectory(prefix="bitsign-route-") as tmp:
+            video = Path(tmp) / "burst.mp4"
+            _burst_to_mp4(images, video)
+            baseline = _baseline_line_from_video(video, root)
+            spelled, frames, confidence = _spelled_from_video(
+                video, root, checkpoint, SPELL_MODE_CONTINUOUS
+            )
+    except (OSError, RuntimeError, subprocess.SubprocessError):
+        return {
+            "english": "",
+            "spelled": "",
+            "baseline": "",
+            "path": "none",
+            "stage": 0,
+            "confidence": 0.0,
+            "model": ROUTE_MODEL_ID,
+            "frames": 0,
+            "provisional": True,
+            "retained": False,
+            "error": "no_line",
+            "reason": NO_LINE,
+        }
+    chosen = fs_router.choose(baseline, spelled, confidence, ROUTER_CONFIG)
+    answer = {
+        "english": chosen["english"],
+        "spelled": chosen["spelled"],
+        "baseline": chosen["baseline"],
+        "path": chosen["path"],
+        "stage": chosen["stage"],
+        "confidence": chosen["confidence"],
+        "model": ROUTE_MODEL_ID,
+        "frames": frames,
+        "provisional": True,
+        "retained": False,
+    }
+    if not answer["english"]:
+        answer["error"] = "no_line"
+        answer["reason"] = NO_LINE if not baseline and not spelled else NO_LETTERS
+    return answer
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send(self, status: int, payload: dict[str, Any]) -> None:
         body = json.dumps(payload).encode()
@@ -368,14 +513,26 @@ class Handler(BaseHTTPRequestHandler):
             reason += " The fingerspelling head is installed."
         else:
             reason += " The fingerspelling head is not installed."
-        self._send(200, {"english": "", "model": MODEL_ID, "reason": reason})
+        reason += " Confidence FS router is available at /route."
+        self._send(
+            200,
+            {
+                "english": "",
+                "model": MODEL_ID,
+                "route_model": ROUTE_MODEL_ID,
+                "reason": reason,
+            },
+        )
 
     def do_POST(self) -> None:  # noqa: N802
         path = self.path.split("?", 1)[0]
-        if path not in ("/translate", "/fingerspell"):
+        if path not in ("/translate", "/fingerspell", "/route"):
             self._send(404, {"english": "", "model": MODEL_ID, "reason": "Unknown path."})
             return
-        model = SPELL_MODEL_ID if path == "/fingerspell" else MODEL_ID
+        model = {
+            "/fingerspell": SPELL_MODEL_ID,
+            "/route": ROUTE_MODEL_ID,
+        }.get(path, MODEL_ID)
         length = int(self.headers.get("content-length", "0") or "0")
         if length < 1 or length > MAX_BODY:
             self._send(400, {"english": "", "model": model, "reason": "Request size is not accepted."})
@@ -387,6 +544,10 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError("body must be an object")
             if path == "/fingerspell":
                 answer = fingerspell(payload)
+                self._send(403 if answer.get("error") == "consent_required" else 200, answer)
+                return
+            if path == "/route":
+                answer = route(payload)
                 self._send(403 if answer.get("error") == "consent_required" else 200, answer)
                 return
             self._send(200, translate(payload))

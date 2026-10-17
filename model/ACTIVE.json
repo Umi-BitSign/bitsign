@@ -1,5 +1,6 @@
 {
   "id": "umi-community-baseline-v0.2",
+  "route_id": "bitsign-v0.2-fsrouter",
   "role": "latest-public-open-weights",
   "selected": "2026-09-27",
   "rule": "BitSign uses the newest public UMI SN78 baseline or certified winner whose weights are published. Score tables without weight files do not qualify. Unpublished cohort checkpoints do not qualify.",
@@ -15,5 +16,9 @@
     ]
   },
   "runner": "model/community-baseline-v0.2",
-  "english_field": "text"
+  "english_field": "text",
+  "fs_router": "model/fs_router.json",
+  "identity": "model/MODEL_IDENTITY.json",
+  "spell_head": "model/heads/spell_head_fsboard.pt",
+  "note": "Translator stays frozen v0.2. /route applies the FSboard CTC head with rc5-style confidence gates. Head weights are not in the archive."
 }

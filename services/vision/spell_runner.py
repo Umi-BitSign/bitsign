@@ -162,7 +162,17 @@ def _hidden(runtime, streams) -> torch.Tensor:
         ).last_hidden_state[0].detach().cpu()
 
 
-def _spell(head: SpellHead, hidden: torch.Tensor, mode: str) -> str:
+def _confidence(scores: torch.Tensor) -> float:
+    """Mean non-blank CTC emission probability (rc5 / MODEL_IDENTITY definition)."""
+    ids = scores.argmax(-1)
+    mask = ids != BLANK
+    if not bool(mask.any()):
+        return 0.0
+    probs = scores.exp()
+    return float(probs[mask, ids[mask]].mean().item())
+
+
+def _spell(head: SpellHead, hidden: torch.Tensor, mode: str) -> tuple[str, float]:
     # The head stays on the CPU. It is small, the burst is a handful of frames,
     # and the packed LSTM is the one op in this stack that MPS would fall back
     # on anyway.
@@ -170,9 +180,10 @@ def _spell(head: SpellHead, hidden: torch.Tensor, mode: str) -> str:
     lengths = torch.tensor([stream.shape[1]], dtype=torch.long)
     with torch.no_grad():
         scores = head(stream, lengths)[0]
+    confidence = _confidence(scores)
     if mode == SLOW_SPELL:
-        return _per_letter(scores.tolist())
-    return _collapse(scores.argmax(-1).tolist())
+        return _per_letter(scores.tolist()), confidence
+    return _collapse(scores.argmax(-1).tolist()), confidence
 
 
 def main() -> None:
@@ -192,9 +203,13 @@ def main() -> None:
         head = _load_head(args.head.resolve(strict=True))
         runtime = SHuBERTInferenceRuntime(root, device=args.device)
         count, streams = _streams(runtime, args.video.resolve(strict=True))
-        spelled = "" if streams is None else _spell(head, _hidden(runtime, streams), args.mode)
+        if streams is None:
+            spelled, confidence = "", 0.0
+        else:
+            spelled, confidence = _spell(head, _hidden(runtime, streams), args.mode)
     answer = {
         "spelled": spelled,
+        "confidence": confidence,
         "frames": count,
         "mode": args.mode,
         "seconds": time.monotonic() - started,

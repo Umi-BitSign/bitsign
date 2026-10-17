@@ -1,0 +1,30 @@
+{
+  "schema": "umi-fs-router-config/2",
+  "checkpoint": "model/heads/spell_head_fsboard.pt",
+  "max_frames": 512,
+  "target_fps": 30,
+  "baseline_loop_collapse": false,
+  "baseline_generate_overrides": {
+    "length_penalty": 0.6,
+    "no_repeat_ngram_size": 16
+  },
+  "rules": [
+    {
+      "min_chars": 10,
+      "threshold": 0.9
+    },
+    {
+      "min_chars": 16,
+      "threshold": 0.85
+    }
+  ],
+  "stage2": {
+    "enabled": true,
+    "loop_branch": false,
+    "loop_min_words": 20,
+    "loop_unique_ratio": 0.5,
+    "max_baseline_words": 6,
+    "min_chars": 8,
+    "min_confidence": 0.83
+  }
+}

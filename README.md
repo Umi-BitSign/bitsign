@@ -17,7 +17,9 @@ Halo stores up to five bonds and accepts one connection at a time, so shared or 
 
 ## Model
 
-BitSign uses the newest public UMI SN78 baseline or certified winner whose weights are actually published. The pin is `model/ACTIVE.json`. That is `umi-community-baseline-v0.2` from [community-baseline-v0.2](https://github.com/Umi-BitSign/umi-reference-model/releases/tag/community-baseline-v0.2). Cohort score tables do not count, because they do not include weights.
+BitSign uses the newest public UMI SN78 baseline or certified winner whose weights are actually published. The pin is `model/ACTIVE.json`. That is `umi-community-baseline-v0.2` from [community-baseline-v0.2](https://github.com/Umi-BitSign/umi-reference-model/releases/tag/community-baseline-v0.2). Cohort score tables do not count, because they do not include weights. The translator stays **frozen**; BitSign does not fine-tune it on FLEURS-ASL.
+
+The continuous path applies rc5-aligned decode overrides from `model/fs_router.json` (`length_penalty` 0.6, `no_repeat_ngram_size` 16). `POST /route` runs continuous and the FSboard CTC head together, then picks with precision-gated confidence rules (same thresholds as `umi-community-baseline-v0.2-ft-fsrouter-rc5`). Identity for that stack is `model/MODEL_IDENTITY.json` (`bitsign-v0.2-fsrouter`).
 
 The vision service calls only the runner named in that pin. The runner in `model/community-baseline-v0.2/` reads a video and prints one JSON object. The vision service turns a glasses burst into a short video, runs that runner, and copies the `text` field into `english`. If the weights are missing, or the runner returns no line, `english` stays empty. The phone does not speak a reason, and the burst is not stored.
 
@@ -77,7 +79,7 @@ The phone build points at it with:
 flutter run --dart-define=BITSIGN_INFERENCE_URL=http://<this-computer>:8091/translate
 ```
 
-The fingerspelling route is assumed to sit beside that one at `/fingerspell`; `--dart-define=BITSIGN_SPELL_URL=...` overrides it. Use the computer's address, not `127.0.0.1`, when the app runs on a phone.
+The fingerspelling route is assumed to sit beside that one at `/fingerspell`; `--dart-define=BITSIGN_SPELL_URL=...` overrides it. The confidence-gated combined path is `POST /route` (consent required, same body as `/fingerspell`). Use the computer's address, not `127.0.0.1`, when the app runs on a phone.
 
 ## License
 

@@ -12,11 +12,13 @@ from server import (
     MISSING_SPELL_HEAD,
     MISSING_WEIGHTS,
     MODEL_ID,
+    ROUTE_MODEL_ID,
     SPELL_MODE_CONTINUOUS,
     SPELL_MODE_SLOW,
     SPELL_MODEL_ID,
     TOO_FEW_LETTERS,
     fingerspell,
+    route,
     spell_head,
     spell_head_ready,
     translate,
@@ -160,6 +162,53 @@ class FingerspellTests(unittest.TestCase):
         result = fingerspell({"frames": [JPEG], "consent": CONSENT}, runner=NO_WEIGHTS)
         self.assertEqual(result["mode"], SPELL_MODE_CONTINUOUS)
         self.assertNotIn("letters", result)
+
+
+class RouteTests(unittest.TestCase):
+    def test_route_requires_consent(self) -> None:
+        result = route({"frames": [JPEG]}, runner=NO_WEIGHTS)
+        self.assertEqual(result["error"], "consent_required")
+        self.assertEqual(result["model"], ROUTE_MODEL_ID)
+        self.assertEqual(result["path"], "none")
+
+    def test_route_rejects_slow_spell(self) -> None:
+        with self.assertRaises(ValueError):
+            route(slow_payload(), runner=NO_WEIGHTS)
+
+    def test_route_stage1_picks_fingerspelling(self) -> None:
+        with mock.patch.object(server, "weights_ready", return_value=True), mock.patch.object(
+            server, "VENV_PYTHON", Path(Path(__file__).name)
+        ), mock.patch.object(
+            server, "_baseline_line_from_video", return_value="something else"
+        ), mock.patch.object(
+            server, "_spelled_from_video", return_value=("abcdefghij", 10, 0.95)
+        ), mock.patch.object(server, "_burst_to_mp4"):
+            result = route(
+                {"frames": [JPEG], "consent": CONSENT},
+                runner=HERE,
+                head=HEAD,
+            )
+        self.assertEqual(result["path"], "fingerspelling")
+        self.assertEqual(result["stage"], 1)
+        self.assertEqual(result["english"], "abcdefghij")
+        self.assertEqual(result["model"], ROUTE_MODEL_ID)
+
+    def test_route_keeps_continuous_when_confidence_is_low(self) -> None:
+        with mock.patch.object(server, "weights_ready", return_value=True), mock.patch.object(
+            server, "VENV_PYTHON", Path(Path(__file__).name)
+        ), mock.patch.object(
+            server, "_baseline_line_from_video", return_value="hello world"
+        ), mock.patch.object(
+            server, "_spelled_from_video", return_value=("abc", 3, 0.4)
+        ), mock.patch.object(server, "_burst_to_mp4"):
+            result = route(
+                {"frames": [JPEG], "consent": CONSENT},
+                runner=HERE,
+                head=HEAD,
+            )
+        self.assertEqual(result["path"], "continuous")
+        self.assertEqual(result["english"], "hello world")
+        self.assertEqual(result["spelled"], "abc")
 
 
 class SlowSpellTests(unittest.TestCase):

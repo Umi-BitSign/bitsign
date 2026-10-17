@@ -64,6 +64,8 @@ class SHuBERTInferenceRuntime:
         device: str = "mps",
         generation_max_length: int = 2048,
         generation_num_beams: int = DEFAULT_GENERATION_NUM_BEAMS,
+        generation_length_penalty: float | None = None,
+        generation_no_repeat_ngram_size: int | None = None,
         dino_batch_size: int = 128,
         model_execution_concurrency: int = 1,
         verify_assets: bool = True,
@@ -86,6 +88,8 @@ class SHuBERTInferenceRuntime:
         self.device = torch.device(device)
         self.generation_max_length = generation_max_length
         self.generation_num_beams = generation_num_beams
+        self.generation_length_penalty = generation_length_penalty
+        self.generation_no_repeat_ngram_size = generation_no_repeat_ngram_size
         self.dino_batch_size = dino_batch_size
         self._model_execution_concurrency = model_execution_concurrency
         self._thread_state = threading.local()
@@ -289,18 +293,26 @@ class SHuBERTInferenceRuntime:
             )
 
             def generate() -> str:
+                kwargs: dict[str, Any] = {
+                    "face_features": face_tensor,
+                    "left_hand_features": left_tensor,
+                    "right_hand_features": right_tensor,
+                    "pose_features": pose_tensor,
+                    "max_length": self.generation_max_length,
+                    "num_beams": self.generation_num_beams,
+                    "early_stopping": True,
+                    "pad_token_id": self._tokenizer.pad_token_id,
+                    "eos_token_id": self._tokenizer.eos_token_id,
+                }
+                # Optional rc5-style decode overrides. Absent values keep the
+                # translator's own defaults (BitSign ships length_penalty 0.6
+                # and no_repeat_ngram_size 16 via model/fs_router.json).
+                if self.generation_length_penalty is not None:
+                    kwargs["length_penalty"] = self.generation_length_penalty
+                if self.generation_no_repeat_ngram_size is not None:
+                    kwargs["no_repeat_ngram_size"] = self.generation_no_repeat_ngram_size
                 with torch.no_grad():
-                    generated_ids = self._translator.generate(
-                        face_features=face_tensor,
-                        left_hand_features=left_tensor,
-                        right_hand_features=right_tensor,
-                        pose_features=pose_tensor,
-                        max_length=self.generation_max_length,
-                        num_beams=self.generation_num_beams,
-                        early_stopping=True,
-                        pad_token_id=self._tokenizer.pad_token_id,
-                        eos_token_id=self._tokenizer.eos_token_id,
-                    )
+                    generated_ids = self._translator.generate(**kwargs)
                 return self._tokenizer.decode(generated_ids[0], skip_special_tokens=True)
 
             hypothesis = timed("translation", generate)

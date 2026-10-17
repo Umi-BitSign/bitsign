@@ -9,6 +9,14 @@ import time
 
 ROOT = Path(__file__).resolve().parent
 
+
+def _override(name: str, cast):
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return None
+    return cast(raw)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("video", type=Path)
@@ -27,7 +35,12 @@ def main():
     started = time.monotonic()
     with contextlib.redirect_stdout(sys.stderr):
         from runtime import SHuBERTInferenceRuntime
-        model = SHuBERTInferenceRuntime(ROOT, device=args.device)
+        model = SHuBERTInferenceRuntime(
+            ROOT,
+            device=args.device,
+            generation_length_penalty=_override("BITSIGN_LENGTH_PENALTY", float),
+            generation_no_repeat_ngram_size=_override("BITSIGN_NO_REPEAT_NGRAM", int),
+        )
         result = model.translate_path(args.video.resolve(strict=True))
     print(json.dumps({"text": result, "seconds": time.monotonic() - started}))
 

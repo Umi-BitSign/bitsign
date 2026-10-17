@@ -1,0 +1,46 @@
+{
+  "model_id": "bitsign-v0.2-fsrouter",
+  "name": "BitSign: frozen umi-community-baseline-v0.2 + FSboard CTC fingerspelling + confidence router",
+  "derived_from": "umi-community-baseline-v0.2",
+  "parent_archive_sha256": "f78979599486456e06e7886b126169f8d45e5e1e7d16d7a2b617648615eef3d4",
+  "format": "safetensors + torch state_dict",
+  "generation": {
+    "length_penalty": 0.6,
+    "max_length": 2048,
+    "no_repeat_ngram_size": 16,
+    "num_beams": 5
+  },
+  "baseline_generation_overrides": {
+    "length_penalty": 0.6,
+    "no_repeat_ngram_size": 16
+  },
+  "components": {
+    "baseline": "community baseline runtime, tokenizer, landmark and feature models, and translator weights unchanged from the parent bundle (frozen)",
+    "translator": {
+      "checkpoint": "models/checkpoint-11625/model.safetensors",
+      "finetune": null,
+      "note": "frozen; BitSign does not fine-tune on FLEURS-ASL"
+    },
+    "fingerspelling": {
+      "checkpoint": "model/heads/spell_head_fsboard.pt",
+      "training": "FSboard train split, CTC letter head on frozen encoder states",
+      "locked_character_error": 0.4054,
+      "router_config": "model/fs_router.json"
+    }
+  },
+  "router": {
+    "inputs": "the input video and the baseline's own answer only",
+    "rules": [
+      {
+        "min_chars": 10,
+        "threshold": 0.9
+      },
+      {
+        "min_chars": 16,
+        "threshold": 0.85
+      }
+    ],
+    "stage1": "use the fingerspelling component iff (confidence >= 0.9 AND >= 10 letters/digits) OR (confidence >= 0.85 AND >= 16 letters/digits) (confidence = mean non-blank CTC emission probability)",
+    "stage2": "after the baseline answers: if its answer is at most 6 words and contains a digit, and the fingerspelling text has confidence >= 0.83 and >= 8 letters/digits, use the fingerspelling text"
+  }
+}
