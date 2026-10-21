@@ -1,0 +1,93 @@
+{
+  "schema": "bitsign-http-inference-qualification/1",
+  "startedAtUtc": "2026-10-21T05:41:19.240481+00:00",
+  "origin": "http://127.0.0.1:8788",
+  "checks": [
+    {
+      "path": "/health",
+      "status": 200,
+      "body": {
+        "ready": true,
+        "stage": "ready",
+        "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+        "inferenceMode": "warm",
+        "initialization": "on_first_request",
+        "verifiedSeconds": 0.003
+      },
+      "elapsedSeconds": 0.014
+    },
+    {
+      "path": "/missing",
+      "status": 404,
+      "body": {
+        "error": "not_found"
+      },
+      "elapsedSeconds": 0.001
+    },
+    {
+      "path": "/translate",
+      "status": 415,
+      "body": {
+        "error": "video_type_unsupported"
+      },
+      "elapsedSeconds": 0.001
+    },
+    {
+      "path": "/translate",
+      "status": 413,
+      "body": {
+        "error": "video_size_invalid"
+      },
+      "elapsedSeconds": 0.001
+    },
+    {
+      "path": "/translate",
+      "status": 422,
+      "body": {
+        "error": "video_unreadable"
+      },
+      "elapsedSeconds": 0.239
+    },
+    {
+      "case": "interrupted_upload",
+      "status": 422
+    },
+    {
+      "path": "/translate",
+      "status": 200,
+      "body": {
+        "text": "thesunrisesintheeast",
+        "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+        "elapsedSeconds": 13.48,
+        "durationSeconds": 7.033,
+        "preprocessing": {
+          "schema": "bitsign-video-admission/1",
+          "normalized": false,
+          "inputSha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+          "inferenceSha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+          "inputBytes": 1224803,
+          "inferenceBytes": 1224803,
+          "inputWidth": 406,
+          "inputHeight": 720,
+          "inputFps": 30.0,
+          "inputEstimatedFrames": 211,
+          "inputDurationSeconds": 7.033333,
+          "maximumDecodedPixels": 350000000,
+          "maximumFrames": 3600,
+          "width": 406,
+          "height": 720,
+          "frames": 211,
+          "fps": 30.0,
+          "durationSeconds": 7.033333333333333,
+          "decodedPixels": 61679520
+        }
+      },
+      "elapsedSeconds": 13.482
+    }
+  ],
+  "video": {
+    "name": "fsboard-the-sun-rises-in-the-east.mp4",
+    "sha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+    "bytes": 1224803
+  }
+}

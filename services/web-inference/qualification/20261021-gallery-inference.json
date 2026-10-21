@@ -1,0 +1,68 @@
+[
+  {
+    "text": "thesunrisesintheeast",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 14.968,
+    "durationSeconds": 7.033,
+    "id": "fsboard-the-sun-rises-in-the-east",
+    "reference": "the sun rises in the east",
+    "inputSha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+    "displaySha256": "d56788faa155babfdc3d3032cbaba742728692f128db46aace26b4599424e56d",
+    "requestSeconds": 14.975
+  },
+  {
+    "text": "wantto joinusforlunch",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 13.469,
+    "durationSeconds": 7.033,
+    "id": "fsboard-want-to-join-us-for-lunch",
+    "reference": "want to join us for lunch",
+    "inputSha256": "8b531103c64f92435a3a616b98d35c11af7096d2902fe95ea6a4dfb49c32e5fe",
+    "displaySha256": "6cd7f9f1ca0b49ee76981770142666666c3f26a9ddd57b5c83b711285f301941",
+    "requestSeconds": 13.473
+  },
+  {
+    "text": "lovemeansmannythings",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 16.147,
+    "durationSeconds": 7.033,
+    "id": "fsboard-love-means-many-things",
+    "reference": "love means many things",
+    "inputSha256": "514f61b6a9ae36c26f53e821a809f9fd769c0956a1e2d81b619dd847cf4ca021",
+    "displaySha256": "ea5c11a0909d71362b4437c40dd760b5bdd3161f50ed9378dd8f05e208ef313e",
+    "requestSeconds": 16.153
+  },
+  {
+    "text": "mybakehasaflattire",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 14.804,
+    "durationSeconds": 7.033,
+    "id": "fsboard-my-bike-has-a-flat-tire",
+    "reference": "my bike has a flat tire",
+    "inputSha256": "f631aa535ef38acbcc691956b2373f3dc6d64cd4ee46e4c3e112ad4cfc939d9b",
+    "displaySha256": "07713cb0bcd6326b267e8d293e22ed1e49016f4acef4103c8e5fd3ff7cec6386",
+    "requestSeconds": 14.806
+  },
+  {
+    "text": "elephants areafraidfmice",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 13.043,
+    "durationSeconds": 7.033,
+    "id": "fsboard-elephants-are-afraid-of-mice",
+    "reference": "elephants are afraid of mice",
+    "inputSha256": "ea2cf3aac9e7c01a811a2fb18aac702f55f2d881b067c5416d3e2a0a6f57b957",
+    "displaySha256": "58294efef59dd9897b1115a929b9d52042f237693113c67697ee502288a37704",
+    "requestSeconds": 13.045
+  },
+  {
+    "text": "myfavorite placetovivisit",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 12.679,
+    "durationSeconds": 7.033,
+    "id": "fsboard-my-favorite-place-to-visit",
+    "reference": "my favorite place to visit",
+    "inputSha256": "586dc9a266c11a17b54250d90afae736200ff90c0a63ad7c8da9ff998bb41356",
+    "displaySha256": "b628667a0fbd1e3ebef710925ca7997641bb4508ee8535078892ef70355d952f",
+    "requestSeconds": 12.682
+  }
+]

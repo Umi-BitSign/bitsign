@@ -1,0 +1,4 @@
+The fingerspelling component (models/fs/fs-fsboard.pt) was trained on the FSboard dataset
+(train split), (c) Google LLC, released under the Creative Commons Attribution 4.0
+International license: https://creativecommons.org/licenses/by/4.0/
+No FSboard media is redistributed in this bundle; only model weights trained on its landmarks.

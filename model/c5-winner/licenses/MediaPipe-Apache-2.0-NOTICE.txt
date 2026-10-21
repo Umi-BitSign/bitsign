@@ -1,0 +1,3 @@
+models/fs/holistic_landmarker.task is a MediaPipe model (c) Google LLC, licensed under the
+Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
+The umi_fs landmark code calls the mediapipe package pinned by the evaluation runtime.

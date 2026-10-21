@@ -1,0 +1,15 @@
+test_admission_rejects_foreign_output_path (test_admission.AdmissionBoundaryTests) ... ok
+test_admission_timeout_kills_decoder_descendant (test_admission.AdmissionBoundaryTests) ... ok
+test_actual_original_main_keeps_shortcut_fallback_overrides_and_stage2 (test_warm_worker.WarmAdapterTests) ... ok
+test_entrypoint_failure_restores_stdout_and_allows_another_capture (test_warm_worker.WarmAdapterTests) ... ok
+test_interop_setting_only_accepts_identical_repeat (test_warm_worker.WarmAdapterTests) ... ok
+test_runtime_refuses_changed_arguments_and_resets_generate (test_warm_worker.WarmAdapterTests) ... ok
+test_malformed_response_restarts_worker (test_warm_worker.WarmClientTests) ... ok
+test_partial_response_is_deadline_bounded (test_warm_worker.WarmClientTests) ... ok
+test_reuses_worker_and_restarts_after_model_error (test_warm_worker.WarmClientTests) ... ok
+test_timeout_kills_descendant_and_next_request_starts_clean (test_warm_worker.WarmClientTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 4.449s
+
+OK

@@ -1,0 +1,5 @@
+The translator weights (models/checkpoint-11625/model.safetensors) were fine-tuned on the
+FLEURS-ASL dataset (devtest split, signers 0-2), Garrett Tanzer and Google, released under the
+Creative Commons Attribution-ShareAlike 4.0 International license:
+https://creativecommons.org/licenses/by-sa/4.0/ (arXiv:2408.13585).
+The fine-tuned weights are distributed under CC BY-SA 4.0. No FLEURS-ASL media is redistributed.

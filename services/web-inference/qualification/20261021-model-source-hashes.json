@@ -1,0 +1,12 @@
+{
+  "schema": "bitsign-model-adapter-source-identity/1",
+  "imageManifestSha256": "5db52030ec910fb9900f2518142c0dc5e12897f3dda15d214fdf052445b9f79d",
+  "sources": {
+    "server.py": "4d12e712c8a9eef066baf9dc559f77cfe1f424ad94a48d1156922832cfd98d54",
+    "verify_model.py": "ee2abf2f8190934c0738766b1d74466156ecaba7a412acaa8650d3384b015a12",
+    "warm_worker.py": "7d086f8e8b3ab11fc4cb2b40594e97fc2addaaad926c04b4f7b67c17b68bfaf1",
+    "warm_worker_client.py": "a61911bdca2a4f1e459f0d8b5822664e9e4573b7933d518efda04db5a801dcf3",
+    "admit_video.py": "bbfce9118dbe5b2390af92c8e0aed8e5808b2c9672a1997d254d475616832c86",
+    "Dockerfile": "a9ebce7eff8f24da4252213029f808038851cc16b3d754b7409082a47db6548b"
+  }
+}

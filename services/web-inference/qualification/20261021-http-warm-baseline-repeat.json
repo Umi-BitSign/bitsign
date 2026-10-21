@@ -1,0 +1,11 @@
+{
+  "text": "Formations.",
+  "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+  "elapsedSeconds": 27.254,
+  "durationSeconds": 3.033,
+  "wallSeconds": 27.263,
+  "imageManifestSha256": "88e85638ba59b1208205c9513594eb311eb6d8dd8bfb836faf48964a0f771026",
+  "mode": "complete_entrypoint_warm",
+  "sameOutputAsImmutableOneShot": true,
+  "note": "Pre-final image: final warm adapter adds only the pinned pre-import environment; final-image qualification retained separately."
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bitsign-web",
+  "account_id": "91287420c3cb985d6d726f4ddd730b18",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-21",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "upload_source_maps": true,
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "MODEL_ID": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "MODEL_NAME": "Trupan \u00b7 C5 public model",
+    "MODEL_LICENSE": "CC-BY-SA-4.0",
+    "INFERENCE_ENABLED": "true",
+    "MAX_UPLOAD_BYTES": "52428800",
+    "MAX_DURATION_SECONDS": "30"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bitsign-web-jobs",
+      "database_id": "3740c675-857b-40d1-9be1-e0eb48d07935",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "VIDEOS",
+      "bucket_name": "bitsign-web-media"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "TRANSLATIONS",
+        "queue": "bitsign-web-inference"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "bitsign-web-inference",
+        "max_batch_size": 1,
+        "max_batch_timeout": 1,
+        "max_retries": 2,
+        "max_concurrency": 1,
+        "dead_letter_queue": "bitsign-web-inference-dead"
+      },
+      {
+        "queue": "bitsign-web-inference-dead",
+        "max_batch_size": 1,
+        "max_batch_timeout": 1,
+        "max_retries": 2,
+        "max_concurrency": 1
+      }
+    ]
+  },
+  "containers": [
+    {
+      "class_name": "C5Model",
+      "image": "registry.cloudflare.com/91287420c3cb985d6d726f4ddd730b18/bitsign-web-c5model@sha256:ab96ff038d1bfae653b486931f2190422d9c8f527db70d9cd66339ab23a82b28",
+      "instance_type": "standard-4",
+      "max_instances": 1
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MODEL",
+        "class_name": "C5Model"
+      }
+    ]
+  },
+  "exports": {
+    "C5Model": {
+      "type": "durable-object",
+      "storage": "sqlite"
+    }
+  },
+  "triggers": {
+    "crons": [
+      "*/2 * * * *"
+    ]
+  }
+}

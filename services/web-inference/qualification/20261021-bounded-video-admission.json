@@ -1,0 +1,109 @@
+{
+  "schema": "bitsign-bounded-video-admission-qualification/1",
+  "emulationAddressSpaceLimitBypass": true,
+  "containerMemoryLimitGiB": 3,
+  "cases": [
+    {
+      "case": "fsboard-the-sun-rises-in-the-east.mp4",
+      "exitCode": 0,
+      "elapsedSeconds": 0.527,
+      "response": {
+        "schema": "bitsign-video-admission/1",
+        "normalized": false,
+        "inputSha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+        "inferenceSha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+        "inputBytes": 1224803,
+        "inferenceBytes": 1224803,
+        "inputDurationSeconds": 7.033333,
+        "maximumDecodedPixels": 350000000,
+        "maximumFrames": 3600,
+        "width": 406,
+        "height": 720,
+        "frames": 211,
+        "fps": 30.0,
+        "durationSeconds": 7.033333333333333,
+        "decodedPixels": 61679520
+      },
+      "stderrBytes": 0
+    },
+    {
+      "case": "4k120.mp4",
+      "exitCode": 0,
+      "elapsedSeconds": 1.35,
+      "response": {
+        "schema": "bitsign-video-admission/1",
+        "normalized": true,
+        "inputSha256": "46b5f1c14711d90e5649f34ed7a0e66f2db417a834a064ad2bb3db2faaa71cf7",
+        "inferenceSha256": "91d5bb59ffe9d9b40961a83134210c3f62d9647d5731d864dba22b0c60138ce8",
+        "inputBytes": 29662,
+        "inferenceBytes": 3606,
+        "inputDurationSeconds": 2.0,
+        "maximumDecodedPixels": 350000000,
+        "maximumFrames": 3600,
+        "width": 738,
+        "height": 414,
+        "frames": 60,
+        "fps": 30.0,
+        "durationSeconds": 2.0,
+        "decodedPixels": 18331920
+      },
+      "stderrBytes": 0
+    },
+    {
+      "case": "too-long.mp4",
+      "exitCode": 0,
+      "elapsedSeconds": 0.22,
+      "response": {
+        "error": "video_too_long"
+      },
+      "stderrBytes": 0
+    },
+    {
+      "case": "camera.webm",
+      "exitCode": 0,
+      "elapsedSeconds": 0.363,
+      "response": {
+        "schema": "bitsign-video-admission/1",
+        "normalized": false,
+        "inputSha256": "b88de41f669b1c456c9d7a73c892d2bd9df86362f367f0adacd011c038afd39c",
+        "inferenceSha256": "b88de41f669b1c456c9d7a73c892d2bd9df86362f367f0adacd011c038afd39c",
+        "inputBytes": 1174,
+        "inferenceBytes": 1174,
+        "inputDurationSeconds": 1.0,
+        "maximumDecodedPixels": 350000000,
+        "maximumFrames": 3600,
+        "width": 64,
+        "height": 64,
+        "frames": 30,
+        "fps": 30.0,
+        "durationSeconds": 1.0,
+        "decodedPixels": 122880
+      },
+      "stderrBytes": 0
+    },
+    {
+      "case": "camera-no-index.webm",
+      "exitCode": 0,
+      "elapsedSeconds": 0.386,
+      "response": {
+        "schema": "bitsign-video-admission/1",
+        "normalized": false,
+        "inputSha256": "b09a29ac4394a0e2fd3358dda734adb27940bbbea3c8201746196c36ceebefb2",
+        "inferenceSha256": "b09a29ac4394a0e2fd3358dda734adb27940bbbea3c8201746196c36ceebefb2",
+        "inputBytes": 1100,
+        "inferenceBytes": 1100,
+        "inputDurationSeconds": 1.0,
+        "maximumDecodedPixels": 350000000,
+        "maximumFrames": 3600,
+        "width": 64,
+        "height": 64,
+        "frames": 30,
+        "fps": 30.0,
+        "durationSeconds": 1.0,
+        "decodedPixels": 122880
+      },
+      "stderrBytes": 0
+    }
+  ],
+  "note": "Case fixtures use Rosetta qualification; production keeps RLIMIT_AS=2GiB. Actual final HTTP boundary qualification and exact source/image identity are retained separately."
+}

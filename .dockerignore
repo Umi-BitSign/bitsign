@@ -1,0 +1,13 @@
+.git
+app
+web
+node_modules
+**/node_modules
+**/__pycache__
+**/.venv
+**/.env*
+**/.dev.vars*
+model/community-baseline-v0.2
+model/release
+model/weights
+model/heads

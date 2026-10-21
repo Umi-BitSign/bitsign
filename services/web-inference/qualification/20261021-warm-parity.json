@@ -1,0 +1,63 @@
+{
+  "schema": "bitsign-warm-original-parity/1",
+  "startedAt": "2026-10-21T05:24:14.907296+00:00",
+  "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+  "runtimeSha256": "7f8a87730cdf0cd405a0ac7cff6aef0ff5cb8ba735f724c1522e0a56405f40f7",
+  "routerSha256": "336b8ef35541fd54df50813906453ab917d5cded9a799f27adcd255ff2fbbf1b",
+  "measurements": [
+    {
+      "name": "document_reference",
+      "mode": "immutable_one_shot",
+      "video": "fsboard-document-public.mp4",
+      "text": "Formations.",
+      "wallSeconds": 46.938,
+      "processPid": 7
+    },
+    {
+      "name": "document_warm_first",
+      "mode": "complete_entrypoint_warm",
+      "video": "fsboard-document-public.mp4",
+      "text": "Formations.",
+      "elapsedSeconds": 39.273,
+      "wallSeconds": 40.473,
+      "processPid": 337
+    },
+    {
+      "name": "document_warm_second",
+      "mode": "complete_entrypoint_warm",
+      "video": "fsboard-document-public.mp4",
+      "text": "Formations.",
+      "elapsedSeconds": 34.568,
+      "wallSeconds": 34.569,
+      "processPid": 337
+    },
+    {
+      "name": "sun_reference",
+      "mode": "immutable_one_shot",
+      "video": "fsboard-the-sun-rises-in-the-east.mp4",
+      "text": "thesunrisesintheeast",
+      "wallSeconds": 14.344,
+      "processPid": 977
+    },
+    {
+      "name": "sun_warm_after_baseline",
+      "mode": "complete_entrypoint_warm",
+      "video": "fsboard-the-sun-rises-in-the-east.mp4",
+      "text": "thesunrisesintheeast",
+      "elapsedSeconds": 12.565,
+      "wallSeconds": 12.566,
+      "processPid": 337
+    },
+    {
+      "name": "sun_warm_fresh_process",
+      "mode": "complete_entrypoint_warm",
+      "video": "fsboard-the-sun-rises-in-the-east.mp4",
+      "text": "thesunrisesintheeast",
+      "elapsedSeconds": 11.399,
+      "wallSeconds": 12.451,
+      "processPid": 1108
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-10-21T05:26:56.388312+00:00"
+}

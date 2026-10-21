@@ -1,0 +1,72 @@
+{
+  "schema": "bitsign-http-inference-qualification/1",
+  "startedAtUtc": "2026-10-21T05:28:10.736202+00:00",
+  "origin": "http://127.0.0.1:8788",
+  "checks": [
+    {
+      "path": "/health",
+      "status": 200,
+      "body": {
+        "ready": true,
+        "stage": "ready",
+        "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+        "inferenceMode": "warm",
+        "initialization": "on_first_request",
+        "verifiedSeconds": 0.004
+      },
+      "elapsedSeconds": 0.011
+    },
+    {
+      "path": "/missing",
+      "status": 404,
+      "body": {
+        "error": "not_found"
+      },
+      "elapsedSeconds": 0.002
+    },
+    {
+      "path": "/translate",
+      "status": 415,
+      "body": {
+        "error": "video_type_unsupported"
+      },
+      "elapsedSeconds": 0.001
+    },
+    {
+      "path": "/translate",
+      "status": 413,
+      "body": {
+        "error": "video_size_invalid"
+      },
+      "elapsedSeconds": 0.002
+    },
+    {
+      "path": "/translate",
+      "status": 422,
+      "body": {
+        "error": "video_unreadable"
+      },
+      "elapsedSeconds": 0.007
+    },
+    {
+      "case": "interrupted_upload",
+      "status": 422
+    },
+    {
+      "path": "/translate",
+      "status": 200,
+      "body": {
+        "text": "Formations.",
+        "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+        "elapsedSeconds": 35.564,
+        "durationSeconds": 3.033
+      },
+      "elapsedSeconds": 35.566
+    }
+  ],
+  "video": {
+    "name": "fsboard-document-public.mp4",
+    "sha256": "ac2a378b7749cb7446edd501e06fe2b8412e761488bdb7e41656d4961e68bec8",
+    "bytes": 303153
+  }
+}

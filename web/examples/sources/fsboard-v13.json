@@ -1,0 +1,60 @@
+{
+  "dataset": "FSboard",
+  "creator": "Google",
+  "copyright": "Copyright 2025 Google",
+  "datasetVersion": 13,
+  "datasetUrl": "https://www.kaggle.com/datasets/googleai/fsboard",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "licenseAppliesTo": [
+    "daun_v3",
+    "dmk_v3"
+  ],
+  "licenseReceipt": {
+    "url": "https://www.kaggle.com/api/v1/datasets/download/googleai/fsboard/LICENSE?datasetVersionNumber=13",
+    "sha256": "96218feb836f9005261b0346501f349d11e4019deb6bbfce899483d94639c7dd"
+  },
+  "citation": {
+    "authors": [
+      "Manfred Georg",
+      "Garrett Tanzer",
+      "Saad Hassan",
+      "Maximus Shengelia",
+      "Esha Uboweja",
+      "Sam Sepah",
+      "Sean Forbes",
+      "Thad Starner"
+    ],
+    "year": 2024,
+    "title": "FSboard: Over 3 million characters of ASL fingerspelling collected via smartphones",
+    "url": "https://arxiv.org/abs/2407.15806"
+  },
+  "publicUse": {
+    "faceBlur": true,
+    "notes": "The official dataset card asks that faces be blurred when publicizing examples; do not reidentify participants or use their likenesses to generate other content. Fingerspelling is one component of ASL; performance on these curated clips does not establish full ASL translation accuracy."
+  },
+  "retrievedAt": "2026-10-21T05:16:20.875568+00:00",
+  "officialCard": {
+    "url": "https://www.kaggle.com/api/v1/datasets/view/googleai/fsboard",
+    "sha256": "b14f513d62ec08833e1ce8fd2eb40011d920561c3a0d7e776ec800a105556574"
+  },
+  "trainMetadata": [
+    {
+      "path": "dmk_v3/metadata/dmk_v3-train.json",
+      "sha256": "fcabb89d682fbc31af1427d120c7c228ac6a4cebe69cbf2b5b6d793a1782f4fc"
+    }
+  ],
+  "clipTransform": {
+    "container": "MP4",
+    "videoCodec": "H.264",
+    "pixelFormat": "yuv420p",
+    "frameRate": 30,
+    "fitWithin": [
+      1280,
+      720
+    ],
+    "preserveAspectRatio": true,
+    "audio": "removed",
+    "faceBlur": "Public playback only; private model input retains the original unblurred scene. Fixed expanded union of face rectangles detected at 2 fps with Apple Vision; exact ffmpeg filter is recorded per clip."
+  }
+}

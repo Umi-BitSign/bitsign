@@ -1,6 +1,9 @@
 # BitSign
 
-BitSign is the glasses app. SignRush stays a separate game.
+BitSign includes a glasses app and a browser demo. The [web demo](web/README.md)
+records, uploads or selects a video and runs the complete published Trupan C5
+model. Its model pin and Cloudflare service are separate from the glasses path
+described below. SignRush stays a separate game.
 
 The phone has two tabs:
 

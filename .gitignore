@@ -12,3 +12,14 @@ model/weights/
 model/heads/
 *.pt
 *.pth
+node_modules/
+.wrangler/
+web/dist/
+web/test-results/
+web/playwright-report/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+model/c5-winner/artifact/
+model/c5-winner/.runtime/

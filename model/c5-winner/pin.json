@@ -1,0 +1,18 @@
+{
+  "schema": "bitsign-c5-model-pin/1",
+  "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+  "cohortId": "5dab3bfb836a91898f010bd229115e3e1c0406c3e17498d3b3b1975adab71428",
+  "submissionId": "7d77ea1cf65ab99384dabcbd99fb4f17cc1648985400a7e368b538cb973f0d96",
+  "minerUid": 104,
+  "miner": "Trupan",
+  "entrypoint": "umi_inference.py",
+  "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+  "apiOrigin": "https://api.umi.vision",
+  "runtimeId": "f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0",
+  "runtimeArchiveUrl": "https://artifacts.umi.vision/v1/runtimes/f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0/offline-cpu-runtime.oci.tar",
+  "runtimeArchiveSha256": "37e09eae8f862d75ddc25fe6b3eadc2fa8d9d7c6b03bfe5d7af4da6b3f97974a",
+  "runtimeArchiveBytes": 2215539200,
+  "modelBytes": 2969426632,
+  "modelFiles": 465,
+  "runtimeOciManifestSha256": "4a7b543559506e7b8c83605d1676c114b06710e287a2349e89c0d995d093f8ec"
+}

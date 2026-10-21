@@ -1,0 +1,31 @@
+{
+  "schema": "bitsign-c5-artifact-qualification/1",
+  "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+  "files": 465,
+  "payloadBytes": 2969426632,
+  "firstDownload": {
+    "status": "completed",
+    "elapsed_seconds": 231.18562299996847,
+    "native_bytes": 2969426632,
+    "restored_bytes": 0
+  },
+  "repeatDownload": {
+    "status": "completed",
+    "elapsed_seconds": 1.9139271669555455,
+    "native_bytes": 0,
+    "restored_bytes": 2969426632
+  },
+  "runtimeArchive": {
+    "sha256": "37e09eae8f862d75ddc25fe6b3eadc2fa8d9d7c6b03bfe5d7af4da6b3f97974a",
+    "bytes": 2215539200,
+    "ociManifestSha256": "4a7b543559506e7b8c83605d1676c114b06710e287a2349e89c0d995d093f8ec",
+    "verified": true
+  },
+  "hardware": {
+    "host": "Apple Silicon MacBook Pro",
+    "runtime": "linux/amd64 via Docker Desktop Rosetta",
+    "vcpuLimit": 4,
+    "memoryLimitGiB": 12
+  },
+  "nativeModelPayloadVerified": true
+}

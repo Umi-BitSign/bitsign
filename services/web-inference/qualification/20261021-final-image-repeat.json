@@ -1,0 +1,22 @@
+[
+  {
+    "text": "Formations.",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 34.824,
+    "durationSeconds": 3.033,
+    "attempt": 1,
+    "wallSeconds": 34.837,
+    "inputSha256": "ac2a378b7749cb7446edd501e06fe2b8412e761488bdb7e41656d4961e68bec8",
+    "imageManifestSha256": "a7d00cbca9f58767e174b258943b631ba66a9ee4c1b33228d8aa4ff4310af724"
+  },
+  {
+    "text": "Formations.",
+    "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "elapsedSeconds": 27.15,
+    "durationSeconds": 3.033,
+    "attempt": 2,
+    "wallSeconds": 27.153,
+    "inputSha256": "ac2a378b7749cb7446edd501e06fe2b8412e761488bdb7e41656d4961e68bec8",
+    "imageManifestSha256": "a7d00cbca9f58767e174b258943b631ba66a9ee4c1b33228d8aa4ff4310af724"
+  }
+]

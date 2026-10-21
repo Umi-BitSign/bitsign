@@ -1,0 +1,26 @@
+{
+  "schema": "umi-public-cohort-models/1",
+  "cohort_sha256": "5dab3bfb836a91898f010bd229115e3e1c0406c3e17498d3b3b1975adab71428",
+  "policy_sha256": "61f6c05143804c297aed524b6e067233567d30fe4eb50ab3289e7bfdad8e26fa",
+  "inventory_sha256": "f1cd6c7c4020dcc78902068bfe30afb068fff7ffb1d4b414e3fe83789f5518e0",
+  "inventory_scope": "all_admitted_model_submissions",
+  "chain_submission_authorized": false,
+  "total": 15,
+  "offset": 0,
+  "limit": 100,
+  "next_offset": null,
+  "selected": {
+    "submission_sha256": "7d77ea1cf65ab99384dabcbd99fb4f17cc1648985400a7e368b538cb973f0d96",
+    "model_sha256": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+    "uid": 104,
+    "hotkey": "5FeKapaCuSKYySFjprJAqkVy7UuebgFru6erVuwo4GvDobWB",
+    "accepted_terms_sha256": "451b8ccf3c592fa4336bcf062594321a0e14f2443613a80f33dc6ee4acb5a0e0",
+    "license_id": "CC-BY-SA-4.0",
+    "file_count": 465,
+    "total_bytes": 2969426632,
+    "release": "public_release_authorized",
+    "acceptance_sha256": "6849102b0146e90c89d90ce8a8be04f43c39b7a7e8c26b0aeb147a5a876b8ad5",
+    "download_available": true,
+    "download_url": "/v1/competition/cohorts/5dab3bfb836a91898f010bd229115e3e1c0406c3e17498d3b3b1975adab71428/models/00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91/download"
+  }
+}

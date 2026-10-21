@@ -1,0 +1,410 @@
+[
+  {
+    "id": "fsboard-the-sun-rises-in-the-east",
+    "title": "The sun rises in the east",
+    "description": "ASL fingerspelling \u00b7 7 seconds",
+    "objectKey": "examples/private/fsboard-the-sun-rises-in-the-east.mp4",
+    "mimeType": "video/mp4",
+    "reference": "the sun rises in the east",
+    "attribution": {
+      "dataset": "FSboard",
+      "creator": "Google (Copyright 2025 Google)",
+      "url": "https://www.kaggle.com/datasets/googleai/fsboard",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Inference clip: H.264 MP4, resized to fit 1280\u00d7720 preserving aspect ratio, normalized to 30 fps, audio removed. Public display: face blurred."
+    },
+    "source": {
+      "split": "train",
+      "datasetVersion": 13,
+      "clipFilename": "b718_543_20220711_164451_882333_888311.mp4",
+      "fullVideoFilename": "b718_543_20220711_164451.mp4",
+      "metadataSha256": "fcabb89d682fbc31af1427d120c7c228ac6a4cebe69cbf2b5b6d793a1782f4fc",
+      "sourceSha256": "dc50144737e66ab803c920e33e6a1c1db2e0da928b265225e672069b3d0012e3",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/googleai/fsboard/dmk_v3%2Fvideo_clips%2Fdmk_v3-train%2Fb718_543_20220711_164451_882333_888311.mp4?datasetVersionNumber=13",
+      "dataset": "FSboard",
+      "collection": "dmk_v3",
+      "metadataPath": "dmk_v3/metadata/dmk_v3-train.json",
+      "publicTrainingSplit": true
+    },
+    "displayObjectKey": "examples/public/fsboard-the-sun-rises-in-the-east.mp4",
+    "displayMedia": {
+      "sha256": "d56788faa155babfdc3d3032cbaba742728692f128db46aace26b4599424e56d",
+      "bytes": 876225,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "privacy": {
+      "faceBlurForDisplayOnly": true,
+      "note": "Faces are blurred for display. The model processes the original clip.",
+      "displayTransform": "[0:v]split[base][face];[face]crop=208:214:198:242,boxblur=luma_radius=24:luma_power=3:chroma_radius=12:chroma_power=3[blurred];[base][blurred]overlay=198:242[out]"
+    },
+    "modelInputMedia": {
+      "sha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+      "bytes": 1224803,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "modelOutput": "thesunrisesintheeast",
+    "qualification": {
+      "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+      "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+      "runtimeId": "f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0",
+      "method": "HTTP translation through complete pinned C5 model entrypoint; output preserved without spelling or spacing corrections.",
+      "observedAt": "2026-10-21T05:28:07.584885+00:00",
+      "elapsedSeconds": 14.968,
+      "requestSeconds": 14.975,
+      "inputSha256": "dcd56d109f04cdb30b6f47c0cd609845ddd0c2f06d446a5c48ef718d53fbe095",
+      "displaySha256": "d56788faa155babfdc3d3032cbaba742728692f128db46aace26b4599424e56d",
+      "curated": true,
+      "qualityScope": "Curated public training-source examples. These results are not an independent test of ASL translation quality."
+    },
+    "exclusions": {
+      "benchmarkSourceGroupsChecked": true,
+      "serviceSourceGroupsChecked": true,
+      "sourceGroupOverlap": false
+    }
+  },
+  {
+    "id": "fsboard-want-to-join-us-for-lunch",
+    "title": "Want to join us for lunch",
+    "description": "ASL fingerspelling \u00b7 7 seconds",
+    "objectKey": "examples/private/fsboard-want-to-join-us-for-lunch.mp4",
+    "mimeType": "video/mp4",
+    "reference": "want to join us for lunch",
+    "attribution": {
+      "dataset": "FSboard",
+      "creator": "Google (Copyright 2025 Google)",
+      "url": "https://www.kaggle.com/datasets/googleai/fsboard",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Inference clip: H.264 MP4, resized to fit 1280\u00d7720 preserving aspect ratio, normalized to 30 fps, audio removed. Public display: face blurred."
+    },
+    "source": {
+      "split": "train",
+      "datasetVersion": 13,
+      "clipFilename": "e0f7_61_20220620_215328_889233_895078.mp4",
+      "fullVideoFilename": "e0f7_61_20220620_215328.mp4",
+      "metadataSha256": "fcabb89d682fbc31af1427d120c7c228ac6a4cebe69cbf2b5b6d793a1782f4fc",
+      "sourceSha256": "d5ace34b3e35804c9e868e054f97b5f224f3620664d1efa51f012385e1f41752",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/googleai/fsboard/dmk_v3%2Fvideo_clips%2Fdmk_v3-train%2Fe0f7_61_20220620_215328_889233_895078.mp4?datasetVersionNumber=13",
+      "dataset": "FSboard",
+      "collection": "dmk_v3",
+      "metadataPath": "dmk_v3/metadata/dmk_v3-train.json",
+      "publicTrainingSplit": true
+    },
+    "displayObjectKey": "examples/public/fsboard-want-to-join-us-for-lunch.mp4",
+    "displayMedia": {
+      "sha256": "6cd7f9f1ca0b49ee76981770142666666c3f26a9ddd57b5c83b711285f301941",
+      "bytes": 767958,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "privacy": {
+      "faceBlurForDisplayOnly": true,
+      "note": "Faces are blurred for display. The model processes the original clip.",
+      "displayTransform": "[0:v]split[base][face];[face]crop=210:212:170:278,boxblur=luma_radius=24:luma_power=3:chroma_radius=12:chroma_power=3[blurred];[base][blurred]overlay=170:278[out]"
+    },
+    "modelInputMedia": {
+      "sha256": "8b531103c64f92435a3a616b98d35c11af7096d2902fe95ea6a4dfb49c32e5fe",
+      "bytes": 920902,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "modelOutput": "wantto joinusforlunch",
+    "qualification": {
+      "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+      "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+      "runtimeId": "f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0",
+      "method": "HTTP translation through complete pinned C5 model entrypoint; output preserved without spelling or spacing corrections.",
+      "observedAt": "2026-10-21T05:28:07.584885+00:00",
+      "elapsedSeconds": 13.469,
+      "requestSeconds": 13.473,
+      "inputSha256": "8b531103c64f92435a3a616b98d35c11af7096d2902fe95ea6a4dfb49c32e5fe",
+      "displaySha256": "6cd7f9f1ca0b49ee76981770142666666c3f26a9ddd57b5c83b711285f301941",
+      "curated": true,
+      "qualityScope": "Curated public training-source examples. These results are not an independent test of ASL translation quality."
+    },
+    "exclusions": {
+      "benchmarkSourceGroupsChecked": true,
+      "serviceSourceGroupsChecked": true,
+      "sourceGroupOverlap": false
+    }
+  },
+  {
+    "id": "fsboard-love-means-many-things",
+    "title": "Love means many things",
+    "description": "ASL fingerspelling \u00b7 7 seconds",
+    "objectKey": "examples/private/fsboard-love-means-many-things.mp4",
+    "mimeType": "video/mp4",
+    "reference": "love means many things",
+    "attribution": {
+      "dataset": "FSboard",
+      "creator": "Google (Copyright 2025 Google)",
+      "url": "https://www.kaggle.com/datasets/googleai/fsboard",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Inference clip: H.264 MP4, resized to fit 1280\u00d7720 preserving aspect ratio, normalized to 30 fps, audio removed. Public display: face blurred."
+    },
+    "source": {
+      "split": "train",
+      "datasetVersion": 13,
+      "clipFilename": "99cb_521_20220622_085243_23600_29533.mp4",
+      "fullVideoFilename": "99cb_521_20220622_085243.mp4",
+      "metadataSha256": "fcabb89d682fbc31af1427d120c7c228ac6a4cebe69cbf2b5b6d793a1782f4fc",
+      "sourceSha256": "cc091b209b05f27ceb452edeca71d8bdbca423f9733d40a5a91e5eb4ced61aad",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/googleai/fsboard/dmk_v3%2Fvideo_clips%2Fdmk_v3-train%2F99cb_521_20220622_085243_23600_29533.mp4?datasetVersionNumber=13",
+      "dataset": "FSboard",
+      "collection": "dmk_v3",
+      "metadataPath": "dmk_v3/metadata/dmk_v3-train.json",
+      "publicTrainingSplit": true
+    },
+    "displayObjectKey": "examples/public/fsboard-love-means-many-things.mp4",
+    "displayMedia": {
+      "sha256": "ea5c11a0909d71362b4437c40dd760b5bdd3161f50ed9378dd8f05e208ef313e",
+      "bytes": 809403,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "privacy": {
+      "faceBlurForDisplayOnly": true,
+      "note": "Faces are blurred for display. The model processes the original clip.",
+      "displayTransform": "[0:v]split[base][face];[face]crop=284:290:120:232,boxblur=luma_radius=24:luma_power=3:chroma_radius=12:chroma_power=3[blurred];[base][blurred]overlay=120:232[out]"
+    },
+    "modelInputMedia": {
+      "sha256": "514f61b6a9ae36c26f53e821a809f9fd769c0956a1e2d81b619dd847cf4ca021",
+      "bytes": 1051381,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "modelOutput": "lovemeansmannythings",
+    "qualification": {
+      "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+      "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+      "runtimeId": "f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0",
+      "method": "HTTP translation through complete pinned C5 model entrypoint; output preserved without spelling or spacing corrections.",
+      "observedAt": "2026-10-21T05:28:07.584885+00:00",
+      "elapsedSeconds": 16.147,
+      "requestSeconds": 16.153,
+      "inputSha256": "514f61b6a9ae36c26f53e821a809f9fd769c0956a1e2d81b619dd847cf4ca021",
+      "displaySha256": "ea5c11a0909d71362b4437c40dd760b5bdd3161f50ed9378dd8f05e208ef313e",
+      "curated": true,
+      "qualityScope": "Curated public training-source examples. These results are not an independent test of ASL translation quality."
+    },
+    "exclusions": {
+      "benchmarkSourceGroupsChecked": true,
+      "serviceSourceGroupsChecked": true,
+      "sourceGroupOverlap": false
+    }
+  },
+  {
+    "id": "fsboard-my-bike-has-a-flat-tire",
+    "title": "My bike has a flat tire",
+    "description": "ASL fingerspelling \u00b7 7 seconds",
+    "objectKey": "examples/private/fsboard-my-bike-has-a-flat-tire.mp4",
+    "mimeType": "video/mp4",
+    "reference": "my bike has a flat tire",
+    "attribution": {
+      "dataset": "FSboard",
+      "creator": "Google (Copyright 2025 Google)",
+      "url": "https://www.kaggle.com/datasets/googleai/fsboard",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Inference clip: H.264 MP4, resized to fit 1280\u00d7720 preserving aspect ratio, normalized to 30 fps, audio removed. Public display: face blurred."
+    },
+    "source": {
+      "split": "train",
+      "datasetVersion": 13,
+      "clipFilename": "fa10_608_20220708_074448_193956_198800.mp4",
+      "fullVideoFilename": "fa10_608_20220708_074448.mp4",
+      "metadataSha256": "fcabb89d682fbc31af1427d120c7c228ac6a4cebe69cbf2b5b6d793a1782f4fc",
+      "sourceSha256": "751ad80951ca04bd7e786164f637020bae94c14c428382ea676577ee9e52e444",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/googleai/fsboard/dmk_v3%2Fvideo_clips%2Fdmk_v3-train%2Ffa10_608_20220708_074448_193956_198800.mp4?datasetVersionNumber=13",
+      "dataset": "FSboard",
+      "collection": "dmk_v3",
+      "metadataPath": "dmk_v3/metadata/dmk_v3-train.json",
+      "publicTrainingSplit": true
+    },
+    "displayObjectKey": "examples/public/fsboard-my-bike-has-a-flat-tire.mp4",
+    "displayMedia": {
+      "sha256": "07713cb0bcd6326b267e8d293e22ed1e49016f4acef4103c8e5fd3ff7cec6386",
+      "bytes": 861096,
+      "durationSeconds": 7.033333,
+      "width": 360,
+      "height": 720
+    },
+    "privacy": {
+      "faceBlurForDisplayOnly": true,
+      "note": "Faces are blurred for display. The model processes the original clip.",
+      "displayTransform": "[0:v]split[base][face];[face]crop=204:212:152:214,boxblur=luma_radius=24:luma_power=3:chroma_radius=12:chroma_power=3[blurred];[base][blurred]overlay=152:214[out]"
+    },
+    "modelInputMedia": {
+      "sha256": "f631aa535ef38acbcc691956b2373f3dc6d64cd4ee46e4c3e112ad4cfc939d9b",
+      "bytes": 1049371,
+      "durationSeconds": 7.033333,
+      "width": 360,
+      "height": 720
+    },
+    "modelOutput": "mybakehasaflattire",
+    "qualification": {
+      "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+      "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+      "runtimeId": "f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0",
+      "method": "HTTP translation through complete pinned C5 model entrypoint; output preserved without spelling or spacing corrections.",
+      "observedAt": "2026-10-21T05:28:07.584885+00:00",
+      "elapsedSeconds": 14.804,
+      "requestSeconds": 14.806,
+      "inputSha256": "f631aa535ef38acbcc691956b2373f3dc6d64cd4ee46e4c3e112ad4cfc939d9b",
+      "displaySha256": "07713cb0bcd6326b267e8d293e22ed1e49016f4acef4103c8e5fd3ff7cec6386",
+      "curated": true,
+      "qualityScope": "Curated public training-source examples. These results are not an independent test of ASL translation quality."
+    },
+    "exclusions": {
+      "benchmarkSourceGroupsChecked": true,
+      "serviceSourceGroupsChecked": true,
+      "sourceGroupOverlap": false
+    }
+  },
+  {
+    "id": "fsboard-elephants-are-afraid-of-mice",
+    "title": "Elephants are afraid of mice",
+    "description": "ASL fingerspelling \u00b7 7 seconds",
+    "objectKey": "examples/private/fsboard-elephants-are-afraid-of-mice.mp4",
+    "mimeType": "video/mp4",
+    "reference": "elephants are afraid of mice",
+    "attribution": {
+      "dataset": "FSboard",
+      "creator": "Google (Copyright 2025 Google)",
+      "url": "https://www.kaggle.com/datasets/googleai/fsboard",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Inference clip: H.264 MP4, resized to fit 1280\u00d7720 preserving aspect ratio, normalized to 30 fps, audio removed. Public display: face blurred."
+    },
+    "source": {
+      "split": "train",
+      "datasetVersion": 13,
+      "clipFilename": "c82a_446_20220428_151652_749378_755633.mp4",
+      "fullVideoFilename": "c82a_446_20220428_151652.mp4",
+      "metadataSha256": "fcabb89d682fbc31af1427d120c7c228ac6a4cebe69cbf2b5b6d793a1782f4fc",
+      "sourceSha256": "89bd58668bbdfa1a4f605181e12ce7a1521d0d6717a0f3216d6709df837ad771",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/googleai/fsboard/dmk_v3%2Fvideo_clips%2Fdmk_v3-train%2Fc82a_446_20220428_151652_749378_755633.mp4?datasetVersionNumber=13",
+      "dataset": "FSboard",
+      "collection": "dmk_v3",
+      "metadataPath": "dmk_v3/metadata/dmk_v3-train.json",
+      "publicTrainingSplit": true
+    },
+    "displayObjectKey": "examples/public/fsboard-elephants-are-afraid-of-mice.mp4",
+    "displayMedia": {
+      "sha256": "58294efef59dd9897b1115a929b9d52042f237693113c67697ee502288a37704",
+      "bytes": 840570,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "privacy": {
+      "faceBlurForDisplayOnly": true,
+      "note": "Faces are blurred for display. The model processes the original clip.",
+      "displayTransform": "[0:v]split[base][face];[face]crop=190:186:188:208,boxblur=luma_radius=24:luma_power=3:chroma_radius=12:chroma_power=3[blurred];[base][blurred]overlay=188:208[out]"
+    },
+    "modelInputMedia": {
+      "sha256": "ea2cf3aac9e7c01a811a2fb18aac702f55f2d881b067c5416d3e2a0a6f57b957",
+      "bytes": 1123066,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "modelOutput": "elephants areafraidfmice",
+    "qualification": {
+      "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+      "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+      "runtimeId": "f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0",
+      "method": "HTTP translation through complete pinned C5 model entrypoint; output preserved without spelling or spacing corrections.",
+      "observedAt": "2026-10-21T05:28:07.584885+00:00",
+      "elapsedSeconds": 13.043,
+      "requestSeconds": 13.045,
+      "inputSha256": "ea2cf3aac9e7c01a811a2fb18aac702f55f2d881b067c5416d3e2a0a6f57b957",
+      "displaySha256": "58294efef59dd9897b1115a929b9d52042f237693113c67697ee502288a37704",
+      "curated": true,
+      "qualityScope": "Curated public training-source examples. These results are not an independent test of ASL translation quality."
+    },
+    "exclusions": {
+      "benchmarkSourceGroupsChecked": true,
+      "serviceSourceGroupsChecked": true,
+      "sourceGroupOverlap": false
+    }
+  },
+  {
+    "id": "fsboard-my-favorite-place-to-visit",
+    "title": "My favorite place to visit",
+    "description": "ASL fingerspelling \u00b7 7 seconds",
+    "objectKey": "examples/private/fsboard-my-favorite-place-to-visit.mp4",
+    "mimeType": "video/mp4",
+    "reference": "my favorite place to visit",
+    "attribution": {
+      "dataset": "FSboard",
+      "creator": "Google (Copyright 2025 Google)",
+      "url": "https://www.kaggle.com/datasets/googleai/fsboard",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "changes": "Inference clip: H.264 MP4, resized to fit 1280\u00d7720 preserving aspect ratio, normalized to 30 fps, audio removed. Public display: face blurred."
+    },
+    "source": {
+      "split": "train",
+      "datasetVersion": 13,
+      "clipFilename": "dbf9_434_20220804_154338_693778_700100.mp4",
+      "fullVideoFilename": "dbf9_434_20220804_154338.mp4",
+      "metadataSha256": "fcabb89d682fbc31af1427d120c7c228ac6a4cebe69cbf2b5b6d793a1782f4fc",
+      "sourceSha256": "bd776a552301c6179a389f491ac0d53ffc5db1e75dbc86204ea9f24f4afbba2f",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/googleai/fsboard/dmk_v3%2Fvideo_clips%2Fdmk_v3-train%2Fdbf9_434_20220804_154338_693778_700100.mp4?datasetVersionNumber=13",
+      "dataset": "FSboard",
+      "collection": "dmk_v3",
+      "metadataPath": "dmk_v3/metadata/dmk_v3-train.json",
+      "publicTrainingSplit": true
+    },
+    "displayObjectKey": "examples/public/fsboard-my-favorite-place-to-visit.mp4",
+    "displayMedia": {
+      "sha256": "b628667a0fbd1e3ebef710925ca7997641bb4508ee8535078892ef70355d952f",
+      "bytes": 731538,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "privacy": {
+      "faceBlurForDisplayOnly": true,
+      "note": "Faces are blurred for display. The model processes the original clip.",
+      "displayTransform": "[0:v]split[base][face];[face]crop=182:192:96:288,boxblur=luma_radius=24:luma_power=3:chroma_radius=12:chroma_power=3[blurred];[base][blurred]overlay=96:288[out]"
+    },
+    "modelInputMedia": {
+      "sha256": "586dc9a266c11a17b54250d90afae736200ff90c0a63ad7c8da9ff998bb41356",
+      "bytes": 896394,
+      "durationSeconds": 7.033333,
+      "width": 406,
+      "height": 720
+    },
+    "modelOutput": "myfavorite placetovivisit",
+    "qualification": {
+      "modelId": "00a74422d9c17a4add1c562bcf54abe4111f26288a33c5168ed458b13b233b91",
+      "entrypointSha256": "92b51f6bbb39984cf71f80fa2d0f77a80acb55339f35a8016ad2c03d79732aee",
+      "runtimeId": "f025ceb38cacc5c71873d94b8f2010aae10a0193a0e410e410a202f4def3b7b0",
+      "method": "HTTP translation through complete pinned C5 model entrypoint; output preserved without spelling or spacing corrections.",
+      "observedAt": "2026-10-21T05:28:07.584885+00:00",
+      "elapsedSeconds": 12.679,
+      "requestSeconds": 12.682,
+      "inputSha256": "586dc9a266c11a17b54250d90afae736200ff90c0a63ad7c8da9ff998bb41356",
+      "displaySha256": "b628667a0fbd1e3ebef710925ca7997641bb4508ee8535078892ef70355d952f",
+      "curated": true,
+      "qualityScope": "Curated public training-source examples. These results are not an independent test of ASL translation quality."
+    },
+    "exclusions": {
+      "benchmarkSourceGroupsChecked": true,
+      "serviceSourceGroupsChecked": true,
+      "sourceGroupOverlap": false
+    }
+  }
+]
