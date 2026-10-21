@@ -87,7 +87,7 @@ measurements, not a forecast of native Cloudflare CPU performance.
 Ten focused adapter tests cover exact original-main behavior, stage-1 lazy
 baseline avoidance, stage-2 preservation, unchanged decoding overrides, repeated
 thread setup, stdout restoration, worker reuse, malformed-response restart and
-process-group cancellation. Run them with `BITSIGN_TEST_TMPDIR=/absolute/task-root/model-runtime/tests PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v test_warm_worker`
+process-group cancellation. Run them with `BITSIGN_TEST_TMPDIR=/absolute/task-root/model-runtime/tests PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v test_admission test_warm_worker`
 from this directory. `qualify_http.py` exercises the real server with an optional
 video, including interrupted upload, invalid media, unsupported type and bounds.
 Ogg uploads are refused with HTTP 415; the browser and Worker accept MP4, WebM,
