@@ -1,5 +1,7 @@
 # BitSign web demo
 
+Live demo: https://bitsign.umi.vision
+
 The browser records a video, accepts an upload or selects a licensed example,
 then displays the complete C5 model's English text beside playback. Results are
 clip-level text with no confidence score or word alignment. Visitors can copy

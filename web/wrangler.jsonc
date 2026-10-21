@@ -9,6 +9,9 @@
   ],
   "upload_source_maps": true,
   "workers_dev": true,
+  "routes": [
+    { "pattern": "bitsign.umi.vision", "custom_domain": true }
+  ],
   "preview_urls": false,
   "assets": {
     "directory": "dist",
